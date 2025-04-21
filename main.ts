@@ -154,13 +154,16 @@ export class TextToAnything {
     this.APIToken = APIToken;
   }
 
-  async generatePDF(fileName: string, PDFData: TTA_pdf) {
+  async generatePDF(fileName: string, PDFData: TTA_pdf): Promise<File> {
     if (PDFData.landscape == undefined) PDFData.landscape = false;
 
     return await this.downloadFile(fileName, "generatePDF", PDFData, "POST");
   }
 
-  async generateBarcode(fileName: string, BarcodeData: TTA_barcode) {
+  async generateBarcode(
+    fileName: string,
+    BarcodeData: TTA_barcode
+  ): Promise<File> {
     return await this.downloadFile(
       fileName,
       "generateBarcode",
@@ -169,7 +172,10 @@ export class TextToAnything {
     );
   }
 
-  async generateQRCode(fileName: string, QRcodeData: TTA_QRcode) {
+  async generateQRCode(
+    fileName: string,
+    QRcodeData: TTA_QRcode
+  ): Promise<File> {
     return await this.downloadFile(fileName, "generateQR", QRcodeData, "GET");
   }
 

@@ -1,4 +1,8 @@
 {
+  "name": "@texttoanything/deno",
+  "version": "0.0.1",
+  "exports": "./main.ts",
+  "license": "MIT",
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
