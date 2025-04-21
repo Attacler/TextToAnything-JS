@@ -2,7 +2,8 @@
 
 This package is a wrapper around the TextToAnything API without using any external dependencies. <br>
 It allows you to easily generate PDF`s, QRCodes or barcodes. This package will return a File object which you can use however you like. <br>
-You can join our Discord incase you need support: [Discord](https://discord.gg/dbEWUHGmnr)
+You can join our Discord incase you need support: [Discord](https://discord.gg/dbEWUHGmnr) <br>
+Compatible with Deno Deploy.
 
 ## Requirements
 
