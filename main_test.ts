@@ -18,7 +18,7 @@ Deno.test(async function PDFTest() {
 });
 
 Deno.test(async function BarcodeTest() {
-  const PDF = await TTA.generateBarcode("barcode.png", {
+  const barcode = await TTA.generateBarcode("barcode.png", {
     content: "Test-12345",
     type: "code128",
     includeText: true,
@@ -26,17 +26,17 @@ Deno.test(async function BarcodeTest() {
 
   await Deno.writeFile(
     "tests-files/barcode.png",
-    new Uint8Array(await PDF.arrayBuffer())
+    new Uint8Array(await barcode.arrayBuffer())
   );
 });
 
 Deno.test(async function QRcodeTest() {
-  const PDF = await TTA.generateQRCode("qrcode.png", {
+  const qrcode = await TTA.generateQRCode("qrcode.png", {
     content: "https://rapidapi.com/Attacler/api/text-to-anything",
   });
 
   await Deno.writeFile(
     "tests-files/qrcode.png",
-    new Uint8Array(await PDF.arrayBuffer())
+    new Uint8Array(await qrcode.arrayBuffer())
   );
 });
