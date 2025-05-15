@@ -1,9 +1,10 @@
 import "https://deno.land/std@0.224.0/dotenv/load.ts";
+import { assertEquals } from "jsr:@std/assert";
 import { TextToAnything } from "./main.ts";
 
 const getAPIToken = Deno.env.get("RAPID_API_TOKEN");
 
-const TTA = new TextToAnything(getAPIToken);
+const TTA = new TextToAnything(getAPIToken as string);
 
 Deno.test(async function PDFTest() {
   const PDF = await TTA.generatePDF("test.pdf", {
@@ -38,5 +39,19 @@ Deno.test(async function QRcodeTest() {
   await Deno.writeFile(
     "tests-files/qrcode.png",
     new Uint8Array(await qrcode.arrayBuffer())
+  );
+});
+
+Deno.test(async function OCRTest() {
+  const file = Deno.readFileSync("tests-files/shakespear.jpg");
+  const ocr = await TTA.OCR(file, "eng", "image/jpeg", "text");
+
+  assertEquals(
+    ocr,
+    `“We know what
+we are, but not
+what we may be.”
+Shakespeare
+`
   );
 });

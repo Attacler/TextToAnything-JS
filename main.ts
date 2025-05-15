@@ -179,6 +179,34 @@ export class TextToAnything {
     return await this.downloadFile(fileName, "generateQR", QRcodeData, "GET");
   }
 
+  async OCR(
+    file: File | Uint8Array,
+    language: string,
+    mimeType: string,
+    mode: "text" | "horc" | "blocks"
+  ): Promise<any> {
+    const url = "https://text-to-anything.p.rapidapi.com/ocr";
+
+    const formdata = new FormData();
+    formdata.append(
+      "image",
+      file instanceof Uint8Array
+        ? new Blob([file], {
+            type: mimeType,
+          })
+        : file,
+      mimeType
+    );
+
+    return await fetch(url + "?language=" + language + "&mode=" + mode, {
+      method: "POST",
+      body: formdata,
+      headers: {
+        "X-RapidAPI-Key": this.APIToken,
+      },
+    }).then((e) => e.text());
+  }
+
   private async downloadFile(
     fileName: string,
     path: string,

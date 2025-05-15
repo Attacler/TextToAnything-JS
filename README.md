@@ -56,3 +56,9 @@ const qrcode = await TTA.generateQRCode("qrcode.png", {
   content: "https://rapidapi.com/Attacler/api/text-to-anything",
 });
 ```
+
+Using OCR on a file:
+
+```ts
+const ocrText = await TTA.OCR(file, "eng", "image/jpeg", "text");
+```
