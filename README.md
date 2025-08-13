@@ -33,7 +33,9 @@ Keep in mind that you will need to link your account.
 See [this article](https://texttoanything.nl/docs/dashboard/link-rapid-api-user) for more information.
 
 ```ts
-const PDF = await TTA.generatePDF("test.pdf", 10, { name: "World!" });
+const PDF = await TTA.generatePDFFromTemplate("test.pdf", 10, { 
+  name: "World!" 
+});
 ```
 
 #### Generating a PDF
