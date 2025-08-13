@@ -18,6 +18,10 @@ Deno.test(async function PDFTest() {
   );
 });
 
+/*
+  The template ID depends on the template inside the TTA dashboard.
+  Make sure to adjust the ID + data to your situation.
+*/
 Deno.test(async function PDFTemplateTest() {
   const PDF = await TTA.generatePDFFromTemplate("templateTest.pdf", 10, {
     company_name: "Your Company Name",
