@@ -27,7 +27,16 @@ const TTA = new TextToAnything(/*API token here*/);
 
 Your done setting up!
 
-Generating a PDF:
+### Generating a PDF from a template
+
+Keep in mind that you will need to link your account.
+See [this article](https://texttoanything.nl/docs/dashboard/link-rapid-api-user) for more information.
+
+```ts
+const PDF = await TTA.generatePDF("test.pdf", 10, { name: "World!" });
+```
+
+#### Generating a PDF
 
 ```ts
 const PDF = await TTA.generatePDF("test.pdf", {
@@ -39,7 +48,7 @@ const PDF = await TTA.generatePDF("test.pdf", {
 });
 ```
 
-Generating a Barcode:
+#### Generating a Barcode
 
 ```ts
 const barcode = await TTA.generateBarcode("barcode.png", {
@@ -49,7 +58,7 @@ const barcode = await TTA.generateBarcode("barcode.png", {
 });
 ```
 
-Generating a QRCode:
+#### Generating a QRCode
 
 ```ts
 const qrcode = await TTA.generateQRCode("qrcode.png", {
@@ -57,7 +66,7 @@ const qrcode = await TTA.generateQRCode("qrcode.png", {
 });
 ```
 
-Using OCR on a file:
+#### Using OCR on a file
 
 ```ts
 const ocrText = await TTA.OCR(file, "eng", "image/jpeg", "text");

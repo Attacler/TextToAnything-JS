@@ -160,6 +160,22 @@ export class TextToAnything {
     return await this.downloadFile(fileName, "generatePDF", PDFData, "POST");
   }
 
+  async generatePDFFromTemplate(
+    fileName: string,
+    templateID: number,
+    templateData: any
+  ): Promise<File> {
+    return await this.downloadFile(
+      fileName,
+      "generatePDF/template",
+      {
+        templateID,
+        templateData,
+      },
+      "POST"
+    );
+  }
+
   async generateBarcode(
     fileName: string,
     BarcodeData: TTA_barcode
@@ -183,8 +199,8 @@ export class TextToAnything {
     file: File | Uint8Array,
     language: string,
     mimeType: string,
-    mode: "text" | "horc" | "blocks"
-  ): Promise<any> {
+    mode: "text" | "horc"
+  ): Promise<string> {
     const url = "https://text-to-anything.p.rapidapi.com/ocr";
 
     const formdata = new FormData();

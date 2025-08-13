@@ -18,6 +18,50 @@ Deno.test(async function PDFTest() {
   );
 });
 
+Deno.test(async function PDFTemplateTest() {
+  const PDF = await TTA.generatePDFFromTemplate("templateTest.pdf", 10, {
+    company_name: "Your Company Name",
+    company_address: "456 Business Ave, Suite 100, Business City, BC 12345",
+    company_email: "contact@yourcompany.com",
+    company_phone: "(555) 123-4567",
+    client_name: "John Doe",
+    client_address: "123 Main Street, New York, NY 10001",
+    client_email: "john.doe@email.com",
+    invoice_number: "INV-2024-001",
+    invoice_date: "2024-06-12",
+    due_date: "2024-07-12",
+    line_items: [
+      {
+        description: "Professional Web Development",
+        quantity: "40",
+        rate: "$25.00",
+        amount: "$1,000.00",
+      },
+      {
+        description: "Website Hosting Setup",
+        quantity: "1",
+        rate: "$150.00",
+        amount: "$150.00",
+      },
+      {
+        description: "Domain Registration",
+        quantity: "1",
+        rate: "$15.00",
+        amount: "$15.00",
+      },
+    ],
+    subtotal: "$1,165.00",
+    tax_amount: "$104.85",
+    total_amount: "$1,269.85",
+    payment_terms: "Payment due within 30 days",
+  });
+
+  await Deno.writeFile(
+    "tests-files/testTemplate.pdf",
+    new Uint8Array(await PDF.arrayBuffer())
+  );
+});
+
 Deno.test(async function BarcodeTest() {
   const barcode = await TTA.generateBarcode("barcode.png", {
     content: "Test-12345",
@@ -51,6 +95,7 @@ Deno.test(async function OCRTest() {
     `“We know what
 we are, but not
 what we may be.”
+
 Shakespeare
 `
   );
