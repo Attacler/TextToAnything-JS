@@ -7,7 +7,8 @@ Compatible with Deno Deploy.
 
 ## Requirements
 
-- A RapidAPI token [you can get it here](https://rapidapi.com/Attacler/api/text-to-anything)
+- For the virusscanner: [you can get the API token here](https://rapidapi.com/Attacler/api/text-to-anything)
+- For the other features: [you can get the API token here](https://rapidapi.com/Attacler/api/virusscan-texttoanything)
 
 ## Usage
 
@@ -73,3 +74,30 @@ const qrcode = await TTA.generateQRCode("qrcode.png", {
 ```ts
 const ocrText = await TTA.OCR(file, "eng", "image/jpeg", "text");
 ```
+
+
+### Virusscanner
+
+
+1. Add the TTA package:
+
+```
+deno add jsr:@texttoanything/deno
+```
+
+2. Initialize TTA:
+
+```ts
+import { TextToAnythingVirusScanner } from "@texttoanything/deno";
+
+const TTAVirus = new TextToAnythingVirusScanner(/*Virusscanner API token here*/);
+```
+
+3. Scan a file
+
+```ts
+const result = await TTAVirusScanner.scanFile(file, "image/jpg");
+
+console.log(result);
+```
+

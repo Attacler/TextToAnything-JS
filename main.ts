@@ -261,3 +261,41 @@ export class TextToAnything {
       );
   }
 }
+
+export class TextToAnythingVirusScanner {
+  private APIToken = "";
+
+  constructor(APIToken: string) {
+    this.APIToken = APIToken;
+  }
+
+  async scanFile(
+    file: File | Uint8Array,
+    mimeType: string
+  ): Promise<{
+    isInfected: boolean;
+    viruses: string[];
+    timeout: boolean;
+  }> {
+    const url = "https://virusscan-texttoanything.p.rapidapi.com/virusScan";
+
+    const formdata = new FormData();
+    formdata.append(
+      "file",
+      file instanceof Uint8Array
+        ? new Blob([file], {
+            type: mimeType,
+          })
+        : file,
+      mimeType
+    );
+
+    return await fetch(url, {
+      method: "POST",
+      body: formdata,
+      headers: {
+        "X-RapidAPI-Key": this.APIToken,
+      },
+    }).then((e) => e.json());
+  }
+}

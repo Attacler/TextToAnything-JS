@@ -1,10 +1,14 @@
 import "https://deno.land/std@0.224.0/dotenv/load.ts";
 import { assertEquals } from "jsr:@std/assert";
-import { TextToAnything } from "./main.ts";
+import { TextToAnything, TextToAnythingVirusScanner } from "./main.ts";
 
 const getAPIToken = Deno.env.get("RAPID_API_TOKEN");
+const getAPIVirusScannerToken = Deno.env.get("VIRUSSCAN_API_TOKEN");
 
 const TTA = new TextToAnything(getAPIToken as string);
+const TTAVirusScanner = new TextToAnythingVirusScanner(
+  getAPIVirusScannerToken as string
+);
 
 Deno.test(async function PDFTest() {
   const PDF = await TTA.generatePDF("test.pdf", {
@@ -103,4 +107,13 @@ what we may be.”
 Shakespeare
 `
   );
+});
+
+Deno.test(async function VirusScanTest() {
+  const file = Deno.readFileSync("tests-files/shakespear.jpg");
+  const result = await TTAVirusScanner.scanFile(file, "image/jpg");
+
+  assertEquals(result.isInfected, false);
+  assertEquals(result.viruses.length, 0);
+  assertEquals(result.timeout, false);
 });
