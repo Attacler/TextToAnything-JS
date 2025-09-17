@@ -3,7 +3,7 @@
 This package is a wrapper around the TextToAnything API without using any external dependencies. <br>
 It allows you to easily generate PDF`s, QRCodes or barcodes. This package will return a File object which you can use however you like. <br>
 You can join our Discord incase you need support: [Discord](https://discord.gg/dbEWUHGmnr) <br>
-Compatible with Deno Deploy.
+Compatible with NodeJS (Typescript) and Deno (Deploy).
 
 ## Requirements
 
@@ -13,12 +13,19 @@ Compatible with Deno Deploy.
 ## Usage
 
 1. Add the TTA package:
+<br>
 
+NodeJS:
+```
+npm i @texttoanything/nodets
+```
 ```
 deno add jsr:@texttoanything/deno
 ```
 
 2. Initialize TTA:
+<br>
+
 NodeJS:
 ```ts
 import { TextToAnything } from "@texttoanything/nodets";
@@ -86,7 +93,12 @@ const ocrText = await TTA.OCR(file, "eng", "image/jpeg", "text");
 
 
 1. Add the TTA package:
-
+<br>
+NodeJS:
+```
+npm i @texttoanything/nodets
+```
+Deno:
 ```
 deno add jsr:@texttoanything/deno
 ```

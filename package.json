@@ -1,6 +1,6 @@
 {
   "name": "@texttoanything/nodets",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "This package is a wrapper around the TextToAnything API without using any external dependencies. <br> You can join our Discord incase you need support: [Discord](https://discord.gg/dbEWUHGmnr)",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -12,9 +12,9 @@
     "url": "git+https://github.com/Attacler/TextToAnything-JS.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Attacler",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Attacler/TextToAnything-JS/issues"
   },
