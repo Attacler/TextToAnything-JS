@@ -1,4 +1,4 @@
-# TextToAnything-deno
+# TextToAnything-JS
 
 This package is a wrapper around the TextToAnything API without using any external dependencies. <br>
 It allows you to easily generate PDF`s, QRCodes or barcodes. This package will return a File object which you can use however you like. <br>
@@ -19,7 +19,13 @@ deno add jsr:@texttoanything/deno
 ```
 
 2. Initialize TTA:
+NodeJS:
+```ts
+import { TextToAnything } from "@texttoanything/nodets";
 
+const TTA = new TextToAnything(/*API token here*/);
+```
+Deno: 
 ```ts
 import { TextToAnything } from "@texttoanything/deno";
 
@@ -87,6 +93,13 @@ deno add jsr:@texttoanything/deno
 
 2. Initialize TTA:
 
+NodeJS:
+```ts
+import { TextToAnythingVirusScanner } from "@texttoanything/nodets";
+
+const TTAVirus = new TextToAnythingVirusScanner(/*Virusscanner API token here*/);
+```
+Deno: 
 ```ts
 import { TextToAnythingVirusScanner } from "@texttoanything/deno";
 
