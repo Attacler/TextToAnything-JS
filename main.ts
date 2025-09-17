@@ -207,7 +207,7 @@ export class TextToAnything {
     formdata.append(
       "image",
       file instanceof Uint8Array
-        ? new Blob([file], {
+        ? new Blob([file as any], {
             type: mimeType,
           })
         : file,
@@ -243,7 +243,7 @@ export class TextToAnything {
         "content-type": "application/json",
         "X-RapidAPI-Key": this.APIToken,
       },
-    })
+    } as any)
       .then(async (response) => {
         if (response.status != 200) {
           const error = await response.text();
@@ -283,7 +283,7 @@ export class TextToAnythingVirusScanner {
     formdata.append(
       "file",
       file instanceof Uint8Array
-        ? new Blob([file], {
+        ? new Blob([file as any], {
             type: mimeType,
           })
         : file,
