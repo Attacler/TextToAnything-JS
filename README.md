@@ -13,7 +13,6 @@ Compatible with NodeJS (Typescript) and Deno (Deploy).
 ## Usage
 
 1. Add the TTA package:
-<br>
 
 NodeJS:
 ```
@@ -24,7 +23,6 @@ deno add jsr:@texttoanything/deno
 ```
 
 2. Initialize TTA:
-<br>
 
 NodeJS:
 ```ts
@@ -93,7 +91,7 @@ const ocrText = await TTA.OCR(file, "eng", "image/jpeg", "text");
 
 
 1. Add the TTA package:
-<br>
+
 NodeJS:
 ```
 npm i @texttoanything/nodets
