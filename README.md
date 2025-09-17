@@ -18,6 +18,7 @@ NodeJS:
 ```
 npm i @texttoanything/nodets
 ```
+Deno:
 ```
 deno add jsr:@texttoanything/deno
 ```
