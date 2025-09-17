@@ -14,11 +14,9 @@ Compatible with NodeJS (Typescript) and Deno (Deploy).
 
 1. Add the TTA package:
 
-NodeJS:
 ```
 npm i @texttoanything/nodets
 ```
-Deno:
 ```
 deno add jsr:@texttoanything/deno
 ```
